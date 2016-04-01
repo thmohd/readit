@@ -31,13 +31,14 @@ class AuthorsList(View):
 
 
 class BookDetails(DetailView):
-    context_object_name = "book"
+    #context_object_name = "book"
     #queryset = Book.objects.all()
     model = Book
     template_name = "book.html"
 
 class AuthorDetails(DetailView):
-    model = "Author"
+    model = Author
+    #context_object_name = "author"
     template_name = "author.html"
 
 
