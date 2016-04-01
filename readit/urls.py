@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from books import views
+from books.views import BookDetails, AuthorDetails, list_books, AuthorsList
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.list_books, name="books")
+    url(r'^$', list_books, name="books"),
+    url(r'^authors/$', AuthorsList.as_view(), name='authors'),
+    url(r'^books/(?P<pk>[-\w])/$', BookDetails.as_view(), name="book_details"),
+    url(r'^author/(?P<pk>[-\w])/$', AuthorDetails.as_view(), name="author_details"),
 ]
