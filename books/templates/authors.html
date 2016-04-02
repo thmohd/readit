@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Authors List</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+{% block content %}
 
     {% for author in authors %}
-        <h2>{{author.name}}</h2>
+        <h2><a href="{% url 'author_details' author.pk %}">{{author.name}}</a></h2>
     {% endfor %}
 
-</body>
-</html>
+{% endblock %}}

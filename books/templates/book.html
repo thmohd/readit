@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+{% block content %}
+
     {% if book.review %}
-        <div class="book">
-            <h3>{{ book.title }}</h3>
-            <p>By {% for author in book.author.all %} {{ author.name}}{% endfor%}</p>
-            {% if book.is_favourite %} <p class="highlight">Favourit</p>{% endif %}
-            <p> {{book.review|linebreaks}}</p>
-        </div>
+        {% include "book.details.html" %}
     {% endif %}
-</body>
-</html>
+
+{% endblock %}

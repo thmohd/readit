@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ReadIt!</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="My greate book review site">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/normalize.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700|Merriweather:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{% static 'img/logo.png' %}" class="logo">
+            <div class="welcome">
+                {% if request.user.is_authenticated %}
+                    <p> Hello {{ request.user.username | title }}, your last logged in {{ request.user.last_login | date:"D d M Y"}}</p>
+                {% else %}
+                    <p> Wlecome Guest!</p>
+                {% endif %}
+            </div>
+        </header>
+        <nav>
+            <a href="{% url 'authors' %}">Auhtors</a>
+            <a href="{% url 'books' %}">Books</a>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+
+        </main>
+        <footer>
+            <p>My awesome review website</p>
+        </footer>
+    </div>
+
+</body>
+</html>
