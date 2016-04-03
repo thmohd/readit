@@ -30,6 +30,8 @@
 	<form method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
+		<p>Can't find the author you're looking for? <a href="{% url 'add-author' %}">Create a New Author</a></p>
 		<input type="submit" value="Request Review">
 	</form>
+
 {% endblock %}
